@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v2
       - name: 'Run Pandoc Builds'
         run: ls | grep '.md' | "v${{ github.run_number }}.rel.txt"
-        working-directory: ./presentations
+        working-directory: ./
       - name: 'Upload Presentation Artifacts'
         uses: actions/upload-artifact@v2
         with:
           name: presentations
-          path: ./presentations/*.pptx
+          path: ./*.rel.txt
   release-content:
     name: 'Create GitHub Release'
     runs-on: ubuntu-latest
