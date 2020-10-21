@@ -13,7 +13,7 @@ jobs:
       - name: 'Checkout Code'
         uses: actions/checkout@v2
       - name: 'Run Pandoc Builds'
-        run: ls | grep '.md' | "v${{ github.run_number }}.rel.txt"
+        run: echo "github.run_number: ${{ github.run_number }}" > "%-v${{ github.run_number }}.rel.txt"
         working-directory: ./
       - name: 'Upload Presentation Artifacts'
         uses: actions/upload-artifact@v2
