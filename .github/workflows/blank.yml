@@ -15,6 +15,7 @@ jobs:
       - name: 'Run Pandoc Builds'
         run: |
           echo "github.run_number: v${{ github.run_number }}.rel.txt" > v${{ github.run_number }}.rel.txt
+          ./test.sh "hello world v${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
           touch v${{ github.run_number }}.rel.txt
         working-directory: ./
       - name: 'Upload Presentation Artifacts'
