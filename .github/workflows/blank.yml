@@ -13,7 +13,7 @@ jobs:
       - name: 'Checkout Code'
         uses: actions/checkout@v2
       - name: 'Run Pandoc Builds'
-        run: ls | grep '.md' | xargs basename -s '.md' | xargs -I % sh -c "pandoc %.md --standalone --slide-level=3 --reference-doc=../.production/template.pptx --variable=monofont:'Cascadia Code' --output %-v${{ github.run_number }}.pptx"
+        run: ls | grep '.md' | "v${{ github.run_number }}.rel.txt"
         working-directory: ./presentations
       - name: 'Upload Presentation Artifacts'
         uses: actions/upload-artifact@v2
@@ -34,6 +34,6 @@ jobs:
       - name: 'Create GitHub Release'
         uses: softprops/action-gh-release@v1
         with:
-          files: ./**/*.pptx
+          files: ./**/*.rel.txt
           tag_name: v${{ github.run_number }}
           name: Release V${{ github.run_number }}
