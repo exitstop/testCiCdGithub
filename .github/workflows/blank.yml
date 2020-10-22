@@ -15,23 +15,7 @@ jobs:
       - name: 'Run Pandoc Builds'
         run: |
           echo "${{ github.sha }}" > v${{ github.run_number }}.rel.txt
-          echo "github.run_number: v${{ github.run_number }}.rel.txt github.ref: ${{ github.ref }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.action: ${{ github.action }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.action_path: ${{ github.action_path }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.base_ref: ${{ github.base_ref }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.event: ${{ github.event }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.event_name: ${{ github.event_name }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.event_path: ${{ github.event_path }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.head_ref: ${{ github.head_ref }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.job: ${{ github.job }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.ref: ${{ github.ref }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.repository_owner: ${{ github.repository_owner }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.run_id: ${{ github.run_id }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.run_number: ${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.sha: ${{ github.sha }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.token: ${{ github.token }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.workflow: ${{ github.workflow }}" >> v${{ github.run_number }}.rel.txt
-          echo "github.workspace: ${{ github.workspace }}" >> v${{ github.run_number }}.rel.txt
+          echo "github.repository.name: ${{ github.repository.name }}" >> v${{ github.run_number }}.rel.txt
           echo "github: ${{ toJson(github) }}" >> v${{ github.run_number }}.rel.txt
           ./test.sh "hello world v${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
           touch v${{ github.run_number }}.rel.txt
