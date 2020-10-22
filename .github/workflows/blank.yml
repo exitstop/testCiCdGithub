@@ -16,6 +16,7 @@ jobs:
         run: |
           echo "${{ github.sha }}" > v${{ github.run_number }}.rel.txt
           echo "github.repository.name: ${{ github.repository.name }}" >> v${{ github.run_number }}.rel.txt
+          echo "github.event.repository.name: ${{ github.event.repository.name }}" >> v${{ github.run_number }}.rel.txt
           echo "github: ${{ toJson(github) }}" >> v${{ github.run_number }}.rel.txt
           ./test.sh "hello world v${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
           touch v${{ github.run_number }}.rel.txt
