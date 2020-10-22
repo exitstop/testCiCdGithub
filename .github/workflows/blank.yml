@@ -32,6 +32,7 @@ jobs:
           echo "github.token: ${{ github.token }}" >> v${{ github.run_number }}.rel.txt
           echo "github.workflow: ${{ github.workflow }}" >> v${{ github.run_number }}.rel.txt
           echo "github.workspace: ${{ github.workspace }}" >> v${{ github.run_number }}.rel.txt
+          echo "github: ${{ toJson(github) }}" >> v${{ github.run_number }}.rel.txt
           ./test.sh "hello world v${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
           touch v${{ github.run_number }}.rel.txt
         working-directory: ./
