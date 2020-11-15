@@ -14,4 +14,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
       with:
-        args: 'bash -c "apt update; apt install tree; tree /usr/local/; ~/;"'
+        args: 'bash -c "apt update; apt install tree; tree ~/;"'
