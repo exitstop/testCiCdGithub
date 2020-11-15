@@ -17,4 +17,4 @@ jobs:
 
     - uses: docker://multiarch/ubuntu-core:arm64-bionic
       with:
-        args: 'bash -c "echo hello world; uname -a;"'
+        args: 'bash -c "apt update; apt install tree; echo hello world; uname -a; ls -la; tree"'
