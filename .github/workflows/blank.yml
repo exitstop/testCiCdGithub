@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-
     - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
       with:
         args: 'uname -a'
@@ -16,3 +15,4 @@ jobs:
     - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
       with:
         args: 'bash -c "apt update; apt install tree; echo hello world; uname -a; ls -la; tree; python3.8 -c \"import torch; import cv2; print(torch.__version__)\" "'
+              uname -a;
