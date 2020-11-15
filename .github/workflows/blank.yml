@@ -2,43 +2,19 @@ name: 'Produce Presentation Content'
 on:
   push:
     branches:
-      - main
+      - "*"
 jobs:
-  build-pptx:
-    name: 'Build PowerPoint Presentation'
+  build:
     runs-on: ubuntu-latest
-    container:
-      image: seesharprun/pandoc-build
     steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v2
-      - name: 'Run Pandoc Builds'
-        run: |
-          echo "${{ github.sha }}" > v${{ github.run_number }}.rel.txt
-          echo "github.event.repository.name: ${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]' >> v${{ github.run_number }}.rel.txt
-          echo "github: ${{ toJson(github) }}" >> v${{ github.run_number }}.rel.txt
-          ./test.sh "hello world v${{ github.run_number }}" >> v${{ github.run_number }}.rel.txt
-          touch v${{ github.run_number }}.rel.txt
-        working-directory: ./
-      - name: 'Upload Presentation Artifacts'
-        uses: actions/upload-artifact@v2
-        with:
-          name: presentations
-          path: ./*.rel.txt
-  release-content:
-    name: 'Create GitHub Release'
-    runs-on: ubuntu-latest
-    needs: [ build-pptx ]
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: 'Download Presentation Artifacts'
-        uses: actions/download-artifact@v2
-        with:
-          name: presentations
-      - name: 'Create GitHub Release'
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./**/*.rel.txt
-          tag_name: v${{ github.run_number }}
-          name: Release V${{ github.run_number }}
+    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
+
+    - uses: docker://multiarch/ubuntu-core:arm64-bionic
+      with:
+        args: 'uname -a'
+
+    - uses: actions/checkout@v1
+
+    - uses: docker://multiarch/ubuntu-core:arm64-bionic
+      with:
+        args: 'bash -c "echo hello world; uname -a;"'
