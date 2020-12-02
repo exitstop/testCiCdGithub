@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: Test ENV
         run: |
+          echo https://123:123@hello.com
+          echo 'http://123:123@hello.com'
+          echo 'https://123:123@hello.com'
+          echo '-https://123:123@hello.com'
+          echo 'ttps://123:123@hello.com'
+          echo HTTP='http://'
           echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
           echo GITHUB_EVENT_NAME $GITHUB_EVENT_NAME
           echo GITHUB_EVENT_PATH $GITHUB_EVENT_PATH
