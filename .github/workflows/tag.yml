@@ -2,7 +2,7 @@ name: 'Produce Presentation Content'
 on:
   create:
     tags:
-      - '*'
+      - '*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
