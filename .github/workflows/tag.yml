@@ -1,4 +1,4 @@
-name: 'Produce Presentation Content'
+name: 'Create tag'
 on:
   create:
     tags:
