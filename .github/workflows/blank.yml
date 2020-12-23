@@ -12,9 +12,5 @@ jobs:
       with:
         lfs: true
     - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-    - name: Dockerfile
-    - runs:
-       using: 'docker'
-       image: 'Dockerfile'
-       #args:
-         #- 'ls'
+    - name: Build the tagged Docker image
+      run: docker build . --file Dockerfile --tag exitstop/pipeline:${{steps.vars.outputs.tag}}
