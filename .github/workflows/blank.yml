@@ -1,19 +1,19 @@
-name: 'Produce Presentation Content'
-on:
-  push:
-    branches:
-      - "*"
-jobs:
-  build:
-    runs-on: ubuntu-20.04
-    # Let's build for many architectures..
-    steps:
-    - uses: actions/checkout@v1
-      with:
-        lfs: true
-    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-    - name: Dockerfile
-      runs:
-        using: 'docker'
-        image: 'Dockerfile'
-        args:
+#name: 'Produce Presentation Content'
+#on:
+  #push:
+    #branches:
+      #- "*"
+#jobs:
+  #build:
+    #runs-on: ubuntu-20.04
+    ## Let's build for many architectures..
+    #steps:
+    #- uses: actions/checkout@v1
+      #with:
+        #lfs: true
+    #- run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
+    #- name: Dockerfile
+      #runs:
+        #using: 'docker'
+        #image: 'Dockerfile'
+        #args:
