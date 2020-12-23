@@ -12,9 +12,9 @@ jobs:
       with:
         lfs: true
     - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-    #- name: Dockerfile
-    #- runs:
-        #using: 'docker'
-        #image: 'Dockerfile'
-        #args:
-          #- 'ls'
+    - name: Dockerfile
+    - runs:
+        using: 'docker'
+        image: 'Dockerfile'
+        args:
+          - 'ls'
