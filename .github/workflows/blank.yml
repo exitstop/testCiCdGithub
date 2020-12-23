@@ -11,7 +11,9 @@ jobs:
     - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
       with:
         args: 'uname -a'
+      entrypoint: 'main.sh'
+      post-entrypoint: 'cleanup.sh'
     - uses: actions/checkout@v1
     - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
       with:
-        args: 'bash -c "uname -a; apt update; apt install tree; tree ~/; readlink -f ~/;"'
+        args: 'bash -c "ls;"'
