@@ -16,5 +16,5 @@ jobs:
     - runs:
        using: 'docker'
        image: 'Dockerfile'
-       args:
-         - 'ls'
+       #args:
+         #- 'ls'
