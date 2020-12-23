@@ -8,11 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-    - uses: docker://exitstop/torch1.4opencv4.3ubuntu20.04arm64
-      with:
-        args: 'uname -a'
-        entrypoint: 'main.sh'
-        post-entrypoint: 'cleanup.sh'
     - uses: actions/checkout@v1
     - name: Dockerfile
       runs:
