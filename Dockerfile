@@ -11,3 +11,4 @@ RUN adduser --disabled-password --gecos '' nvidia
 RUN usermod -aG sudo nvidia
 #RUN su - nvidia
 RUN dpkg -i pipeline-2.0.6-aarch64-main.deb
+RUN echo HELLO I'am Dockerfile
