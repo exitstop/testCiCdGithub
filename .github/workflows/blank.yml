@@ -9,12 +9,12 @@ jobs:
     # Let's build for many architectures..
     steps:
     - uses: actions/checkout@v1
-    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
-      with:
-        lfs: true
-    - name: Dockerfile
-    - runs:
-        using: 'docker'
-        image: 'Dockerfile'
-        args:
-          - 'ls'
+    #- run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
+      #with:
+        #lfs: true
+    #- name: Dockerfile
+    #- runs:
+        #using: 'docker'
+        #image: 'Dockerfile'
+        #args:
+          #- 'ls'
