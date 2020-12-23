@@ -1,0 +1,16 @@
+name: 'Produce Presentation Content'
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    # Let's build for many architectures..
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        lfs: true
+    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
+    - name: Build the tagged Docker image
+      run: docker build . --file Dockerfile --tag exitstop/pipeline:${{steps.vars.outputs.tag}}
