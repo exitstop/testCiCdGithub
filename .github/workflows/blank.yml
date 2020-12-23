@@ -5,10 +5,11 @@ on:
       - "*"
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    # Let's build for many architectures..
     steps:
-    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
     - uses: actions/checkout@v1
+    - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
       with:
         lfs: true
     - name: Dockerfile
