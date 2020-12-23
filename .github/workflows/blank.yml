@@ -9,6 +9,8 @@ jobs:
     steps:
     - run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
     - uses: actions/checkout@v1
+      with:
+        lfs: true
     - name: Dockerfile
       runs:
         using: 'docker'
