@@ -13,4 +13,4 @@ jobs:
         lfs: true
     #- run: docker run --rm --privileged multiarch/qemu-user-static:register --reset
     - name: Build the tagged Docker image
-      run: docker build . --file Dockerfile -t exitstop/pipeline
+      run: env
